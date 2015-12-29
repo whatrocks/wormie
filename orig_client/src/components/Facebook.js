@@ -2,6 +2,7 @@ var React = require('react-native');
 var FBSDKLogin = require('react-native-fbsdklogin');
 var FBSDKCore = require('react-native-fbsdkcore');
 import Signup from '../containers/Signup';
+import Login from '../containers/Login';
 
 
 var {
@@ -28,6 +29,12 @@ class FacebookLogin extends React.Component {
     });
   }
 
+  goToLogin() {
+    this.props.navigator.replace({
+      component: Login
+    });
+  }
+
   convertToken(token){
 
     var tokenData = "grant_type=convert_token&client_id=LQBBAG7oJGNgdQyFyJg8TgZpNveL3d8PDkVgfgG2&client_secret=FjoMZbsjfuNJPEsuCgGFHTC0ABDh1KhM0odP7yJpDTAVvcrMzxFNSCU0seF6959ekTsCdB0FSbt2deHnHwM8U5GQfKW9WfrDyBlcHyViRxTF6vM0oavydUkByfUBK4HJ&backend=facebook&token=" + token;
@@ -39,7 +46,9 @@ class FacebookLogin extends React.Component {
   }
 
   _removeStorage() {
-    AsyncStorage.removeItem(STORAGE_KEY); 
+    AsyncStorage.removeItem(STORAGE_KEY, () => {
+      this.goToLogin();
+    });
   }
 
   render () {
