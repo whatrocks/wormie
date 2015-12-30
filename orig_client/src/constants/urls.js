@@ -1,6 +1,6 @@
 const host = 'http://wormie-4-dev.elasticbeanstalk.com/api';
 const authHost = 'http://wormie-4-dev.elasticbeanstalk.com/auth';
-const wormieHost = 'http://localhost:7878';
+const wormieHost = 'http://52.53.249.61';
 
 const urls = {
 	wormholes: `${host}/wormholes/`,
